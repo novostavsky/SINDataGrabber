@@ -5,6 +5,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.firefox.internal.ProfilesIni;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.PageFactory;
 
 
 import cdp.lviv.singrabber.pages.LoginPage;
@@ -19,7 +20,8 @@ public class MyRunner {
         capabilities.setCapability(FirefoxDriver.PROFILE, profile);
 		WebDriver driver = new FirefoxDriver(capabilities);
 		
-		LoginPage loginPage = new LoginPage(driver);
+		LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
+
 		loginPage.open();
 		loginPage.login("mail", "passwd");
 		
