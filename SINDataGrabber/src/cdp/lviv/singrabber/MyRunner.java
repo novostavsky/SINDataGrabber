@@ -26,7 +26,7 @@ public class MyRunner {
 		LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
         loginPage.open();
         Thread.sleep(1000);
-		loginPage.login("novostavsky@gmail.com", "nbjteaqhs");
+		loginPage.login("login", "passwd");
 		
 		HomePage homePage = PageFactory.initElements(driver, HomePage.class);
         Thread.sleep(1000);
