@@ -18,14 +18,16 @@ public class LoginPage extends AbstractPage {
 	public LoginPage(WebDriver driver) {
 		super(driver);
 	}
-    public LoginPage open() {
+    public LoginPage open() throws InterruptedException {
         super.openRelativePath("");
+        Thread.sleep(1000);
         return this;
     }
-    public AbstractPage login(String email, String password){
+    public AbstractPage login(String email, String password) throws InterruptedException{
     	this.emailField.sendKeys(email);
     	this.passwordField.sendKeys(password);
     	this.signInButton.click();
+    	Thread.sleep(1000);
     	
     	return this;
     }

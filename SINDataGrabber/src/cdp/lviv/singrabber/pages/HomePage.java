@@ -14,9 +14,10 @@ public class HomePage extends AbstractPage {
 	public HomePage(WebDriver driver) {
 		super(driver);
 	}
-	public AbstractPage search(String searchPattern){
+	public AbstractPage search(String searchPattern) throws InterruptedException{
 		this.searchField.sendKeys(searchPattern);
 		this.searchButton.click();
+		Thread.sleep(1000);
 		
 		return this;
 	}
