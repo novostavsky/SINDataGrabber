@@ -34,6 +34,8 @@ public class MyRunner {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		
+		driver.quit();
 	}
 	
 	public static void grab(WebDriver driver, String searchString, String login, String passwd) throws InterruptedException{
