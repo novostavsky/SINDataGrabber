@@ -1,5 +1,6 @@
 package cdp.lviv.singrabber.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -32,30 +33,48 @@ public class ProfilePage extends AbstractPage {
   @FindBy(xpath = "//div/div/dl/dd[3]/ul")
   private WebElement education;
   
-//  @FindBy(className = "abook-email")
-//  private WebElement email;
+  @FindBy(className = "abook-email")
+  private WebElement email;
   
   private String id;
  
 	
 	public ProfilePage(WebDriver driver) {
 		super(driver);
-		
 		//get linkedin id from url
 		this.id = this.driver.getCurrentUrl().split("id=")[1].split("&")[0];
 		
 	}
 	public Tester initTester(Tester tester){
 		tester.setId(Long.parseLong(id));
-		tester.setGivenName(this.givenName.getText());
-		tester.setFamilyName(this.familyName.getText());
-		tester.setCurrentTitle(this.currentTitle.getText());
-		tester.setPastTitle(this.pastTitle.getText());
-		tester.setPeriod(this.period.getText());
-		tester.setLocality(this.locality.getText());
-		tester.setIndustry(this.industry.getText());
-		tester.setEducation(this.education.getText());
-//		tester.setEducation(this.email.getText());
+		
+		if(this.hasClassName("given-name")){
+			tester.setGivenName(this.givenName.getText());
+		}
+		if(this.hasClassName("family-name")){
+			tester.setFamilyName(this.familyName.getText());
+		}
+		if(this.hasClassName("current")){
+			tester.setCurrentTitle(this.currentTitle.getText());
+		}
+		if(this.hasClassName("past")){
+			tester.setPastTitle(this.pastTitle.getText());
+		}
+		if(this.hasClassName("period")){
+			tester.setPeriod(this.period.getText());
+		}
+		if(this.hasClassName("locality")){
+			tester.setLocality(this.locality.getText());
+		}
+		if(this.hasClassName("industry")){
+			tester.setIndustry(this.industry.getText());
+		}
+		if(this.hasXPath("//div/div/dl/dd[3]/ul")){
+			tester.setEducation(this.education.getText());
+		}
+		if(this.hasClassName("abook-email")){
+			tester.setEducation(this.email.getText());
+		}
 		
 		return tester;
 	}
@@ -64,6 +83,21 @@ public class ProfilePage extends AbstractPage {
     	Thread.sleep(1000);
     	
     	return this;
+    }
+    
+    private boolean hasClassName(String className){
+    	if(this.driver.findElements(By.className(className)).size() !=0){
+    		return true;
+    	}else{
+    		return false;
+    	}
+    }
+    private boolean hasXPath(String xPath){
+    	if(this.driver.findElements(By.xpath(xPath)).size() !=0){
+    		return true;
+    	}else{
+    		return false;
+    	}
     }
 
 }
