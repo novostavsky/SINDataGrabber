@@ -73,7 +73,7 @@ public class ProfilePage extends AbstractPage {
 			tester.setEducation(this.education.getText());
 		}
 		if(this.hasClassName("abook-email")){
-			tester.setEducation(this.email.getText());
+			tester.setEmail(this.email.getText());
 		}
 		
 		return tester;
