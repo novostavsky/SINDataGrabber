@@ -18,7 +18,7 @@ public class MyRunner {
 		WebDriver driver = SINDriver.getInstance().getDriver();
 		
 		try {
-			MyRunner.grab(driver, "Lviv QA", "novostavsky@gmail.com", "tobeornottobe123");
+			MyRunner.grab(driver, "Lviv QA", "", "");
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
