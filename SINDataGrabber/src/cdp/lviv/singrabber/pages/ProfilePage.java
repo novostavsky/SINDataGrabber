@@ -81,7 +81,7 @@ public class ProfilePage extends AbstractPage {
 	}
     public AbstractPage goBack() throws InterruptedException{
     	this.driver.navigate().back();
-    	Thread.sleep(1000);
+    	Thread.sleep(3000);
     	
 		SearchResultPage searchResult = PageFactory.initElements(driver, SearchResultPage.class);
     	

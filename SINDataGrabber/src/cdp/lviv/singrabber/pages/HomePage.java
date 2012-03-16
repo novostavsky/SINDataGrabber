@@ -18,7 +18,7 @@ public class HomePage extends AbstractPage {
 	public AbstractPage search(String searchPattern) throws InterruptedException{
 		this.searchField.sendKeys(searchPattern);
 		this.searchButton.click();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		
 		SearchResultPage searchResult = PageFactory.initElements(driver, SearchResultPage.class);
 		

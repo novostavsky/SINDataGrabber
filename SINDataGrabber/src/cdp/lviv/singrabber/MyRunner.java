@@ -34,8 +34,12 @@ public class MyRunner {
 		
 		SearchResultPage searchResult = (SearchResultPage) homePage.search(searchString);
 		
-		for(int i=1; i<11; i++){
-			for(int j=1; j<11; j ++){
+		searchResult.showMore();
+		searchResult.selectSymphony();
+		
+		while(!searchResult.isTheEnd()){
+			int personsOnpage = searchResult.getNumOfPersonsOnPage();
+			for(int j=1; j<(personsOnpage+1); j ++){
 				ProfilePage profilePage = (ProfilePage) searchResult.getPerson(j);
 				Tester tester = new Tester(); 
 		        profilePage.initTester(tester);
