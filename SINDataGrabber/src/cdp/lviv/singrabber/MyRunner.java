@@ -30,7 +30,7 @@ public class MyRunner {
 		WebDriver driver = new HtmlUnitDriver();
 		
 		try {
-			MyRunner.grab(driver, "Lviv QA", "login", "passwd");
+			MyRunner.grab(driver, "Lviv QA", "", "");
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
