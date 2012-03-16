@@ -15,18 +15,17 @@ import cdp.lviv.singrabber.pages.SearchResultPage;
 public class MyRunner {
 
 	public static void main(String[] args) {
-		WebDriver driver = SINDriver.getInstance().getDriver();
-		
 		try {
-			MyRunner.grab(driver, "Lviv QA", "", "");
+			MyRunner.grab("Lviv QA", "", "");
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		
-		driver.quit();
 	}
 	
-	public static void grab(WebDriver driver, String searchString, String login, String passwd) throws InterruptedException{
+	public static void grab(String searchString, String login, String passwd) 
+															throws InterruptedException{
+		
+		WebDriver driver = SINDriver.getInstance().getDriver();
 		TesterManager manager = new TesterManager();
 		
 		LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
@@ -50,5 +49,6 @@ public class MyRunner {
 			}
 			searchResult.getNextSearchResult();
 		}
+		driver.quit();
 	}
 }
