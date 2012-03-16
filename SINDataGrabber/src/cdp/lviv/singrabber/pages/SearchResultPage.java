@@ -51,6 +51,8 @@ public class SearchResultPage extends AbstractPage {
 		this.nextLink.click();
 		Thread.sleep(3000);
 		
-		return this;
+		SearchResultPage searchResult = PageFactory.initElements(driver, SearchResultPage.class);
+		
+		return searchResult;
 	}
 }

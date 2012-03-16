@@ -1,4 +1,4 @@
-package cdp.lviv.singrabber.beans;
+package cdp.lviv.singrabber.dao;
 
 public class Tester {
 	private long id;

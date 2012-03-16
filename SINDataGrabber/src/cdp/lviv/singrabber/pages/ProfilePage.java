@@ -1,15 +1,14 @@
 package cdp.lviv.singrabber.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import cdp.lviv.singrabber.beans.Tester;
+import cdp.lviv.singrabber.dao.Tester;
 
 public class ProfilePage extends AbstractPage {
-//  @FindBy(className = "backToResults")
-//  private WebElement goBackLink;  
 	
   @FindBy(className = "given-name")
   private WebElement givenName;
@@ -45,42 +44,63 @@ public class ProfilePage extends AbstractPage {
 		super(driver);
 		//get linkedin id from url
 		this.id = this.driver.getCurrentUrl().split("id=")[1].split("&")[0];
+		
 	}
 	public Tester initTester(Tester tester){
 		tester.setId(Long.parseLong(id));
-		tester.setGivenName(this.givenName.getText());
-		tester.setFamilyName(this.familyName.getText());
-		tester.setPastTitle(this.pastTitle.getText());
-		tester.setPeriod(this.period.getText());
-		tester.setLocality(this.locality.getText());
-		tester.setIndustry(this.industry.getText());
-		tester.setEducation(this.education.getText());
-		tester.setEmail(this.email.getText());
+		
+		if(this.hasClassName("given-name")){
+			tester.setGivenName(this.givenName.getText());
+		}
+		if(this.hasClassName("family-name")){
+			tester.setFamilyName(this.familyName.getText());
+		}
+		if(this.hasClassName("current")){
+			tester.setCurrentTitle(this.currentTitle.getText());
+		}
+		if(this.hasClassName("past")){
+			tester.setPastTitle(this.pastTitle.getText());
+		}
+		if(this.hasClassName("period")){
+			tester.setPeriod(this.period.getText());
+		}
+		if(this.hasClassName("locality")){
+			tester.setLocality(this.locality.getText());
+		}
+		if(this.hasClassName("industry")){
+			tester.setIndustry(this.industry.getText());
+		}
+		if(this.hasXPath("//div/div/dl/dd[3]/ul")){
+			tester.setEducation(this.education.getText());
+		}
+		if(this.hasClassName("abook-email")){
+			tester.setEmail(this.email.getText());
+		}
 		
 		return tester;
 	}
-	public void getInfo() throws InterruptedException{
-		System.out.println(
-				this.id + "|" +
-				this.givenName.getText() + "|" +
-				this.familyName.getText() + "|" +
-				this.currentTitle.getText() + "|" +
-				this.pastTitle.getText()  + "|" +
-				this.period.getText() + "|" +
-				this.locality.getText() + "|" +
-				this.industry.getText() + "|" +
-				this.education.getText() + "|" +
-				this.email.getText() + "\n");
-		Thread.sleep(1000);
-	}
     public AbstractPage goBack() throws InterruptedException{
-//    	this.goBackLink.click();
     	this.driver.navigate().back();
     	Thread.sleep(1000);
     	
 		SearchResultPage searchResult = PageFactory.initElements(driver, SearchResultPage.class);
     	
     	return searchResult;
+    }
+    
+    private boolean hasClassName(String className){
+    	if(this.driver.findElements(By.className(className)).size() !=0){
+    		return true;
+    	}else{
+    		return false;
+    	}
+    }
+    private boolean hasXPath(String xPath){
+    	if(this.driver.findElements(By.xpath(xPath)).size() !=0){
+    		return true;
+    	}else{
+    		return false;
+    	}
     }
 
 }
