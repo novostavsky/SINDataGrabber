@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 //import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class SearchResultPage extends AbstractPage {
 //    @FindBy(id = "keywords-search")
@@ -42,7 +43,9 @@ public class SearchResultPage extends AbstractPage {
 		this.getPersonLink(numberOnThePage).click();
 		Thread.sleep(1000);
 		
-		return this;
+		ProfilePage profilePage = PageFactory.initElements(driver, ProfilePage.class);
+		
+		return profilePage;
 	}
 	public AbstractPage getNextSearchResult() throws InterruptedException{
 		this.nextLink.click();

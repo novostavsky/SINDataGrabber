@@ -3,6 +3,7 @@ package cdp.lviv.singrabber.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import cdp.lviv.singrabber.beans.Tester;
 
@@ -77,7 +78,9 @@ public class ProfilePage extends AbstractPage {
     	this.driver.navigate().back();
     	Thread.sleep(1000);
     	
-    	return this;
+		SearchResultPage searchResult = PageFactory.initElements(driver, SearchResultPage.class);
+    	
+    	return searchResult;
     }
 
 }

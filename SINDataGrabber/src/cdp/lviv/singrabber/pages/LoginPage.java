@@ -3,6 +3,7 @@ package cdp.lviv.singrabber.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage extends AbstractPage {
     @FindBy(id = "session_key-login")
@@ -29,6 +30,8 @@ public class LoginPage extends AbstractPage {
     	this.signInButton.click();
     	Thread.sleep(1000);
     	
-    	return this;
+		HomePage homePage = PageFactory.initElements(driver, HomePage.class);
+    	
+    	return homePage;
     }
 }
