@@ -16,7 +16,7 @@ public class MyRunner {
 
 	public static void main(String[] args) {
 		try {
-			MyRunner.grab("Lviv QA", "", "");
+			MyRunner.grab("test Lviv", "", "");
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

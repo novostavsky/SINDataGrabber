@@ -43,7 +43,8 @@ public class ProfilePage extends AbstractPage {
 	public ProfilePage(WebDriver driver) {
 		super(driver);
 		//get linkedin id from url
-		this.id = this.driver.getCurrentUrl().split("id=")[1].split("&")[0];
+		String url = this.driver.getCurrentUrl();
+		this.id = url.split("id=")[1].split("&")[0];
 		
 	}
 	public Tester initTester(Tester tester){
