@@ -34,9 +34,6 @@ public class MyRunner {
 		
 		SearchResultPage searchResult = (SearchResultPage) homePage.search(searchString);
 		
-		searchResult.showMore();
-		searchResult.selectSymphony();
-		
 		while(!searchResult.isTheEnd()){
 			int personsOnpage = searchResult.getNumOfPersonsOnPage();
 			for(int j=1; j<(personsOnpage+1); j ++){
