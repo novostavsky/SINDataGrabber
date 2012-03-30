@@ -16,7 +16,7 @@ public class MyRunner {
 
 	public static void main(String[] args) {
 		try {
-			MyRunner.grab("test Lviv", "", "");
+			MyRunner.grab("Lviv qa", "novostavsky@gmail.com", "nbjteaqhsin1");
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -37,7 +37,7 @@ public class MyRunner {
 		while(!searchResult.isTheEnd()){
 			int personsOnpage = searchResult.getNumOfPersonsOnPage();
 			for(int j=1; j<(personsOnpage+1); j ++){
-				ProfilePage profilePage = (ProfilePage) searchResult.getPerson(j);
+				ProfilePage profilePage = (ProfilePage) searchResult.getPerson(j);				
 				Tester tester = new Tester(); 
 		        profilePage.initTester(tester);
 		        
