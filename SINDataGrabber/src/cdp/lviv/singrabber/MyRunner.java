@@ -16,7 +16,7 @@ public class MyRunner {
 
 	public static void main(String[] args) {
 		try {
-			MyRunner.grab("Lviv qa", "novostavsky@gmail.com", "nbjteaqhsin1");
+			MyRunner.grab("Lviv qa", "", "");
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
