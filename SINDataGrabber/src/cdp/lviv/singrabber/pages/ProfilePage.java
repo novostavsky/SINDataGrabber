@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import cdp.lviv.singrabber.dao.Tester;
+import cdp.lviv.singrabber.dto.Tester;
 
 public class ProfilePage extends AbstractPage {
 	
@@ -90,14 +90,14 @@ public class ProfilePage extends AbstractPage {
     }
     
     private boolean hasClassName(String className){
-    	if(this.driver.findElements(By.className(className)).size() !=0){
+    	if(this.driver.findElements(By.className(className)).isEmpty()){
     		return true;
     	}else{
     		return false;
     	}
     }
     private boolean hasXPath(String xPath){
-    	if(this.driver.findElements(By.xpath(xPath)).size() !=0){
+    	if(this.driver.findElements(By.xpath(xPath)).isEmpty()){
     		return true;
     	}else{
     		return false;

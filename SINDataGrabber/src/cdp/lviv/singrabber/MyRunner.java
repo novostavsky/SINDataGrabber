@@ -5,8 +5,8 @@ import java.sql.SQLException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-import cdp.lviv.singrabber.dao.Tester;
 import cdp.lviv.singrabber.db.TesterManager;
+import cdp.lviv.singrabber.dto.Tester;
 import cdp.lviv.singrabber.pages.HomePage;
 import cdp.lviv.singrabber.pages.LoginPage;
 import cdp.lviv.singrabber.pages.ProfilePage;
@@ -15,15 +15,21 @@ import cdp.lviv.singrabber.pages.SearchResultPage;
 public class MyRunner {
 
 	public static void main(String[] args) {
+		String searchQuery = "";
+		
+		for(int i=0; i<args.length; i++){
+			searchQuery += args[i];
+		}
+		
 		try {
-			MyRunner.grab("Lviv qa", "", "");
+			MyRunner.grab(searchQuery, "", "");
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 	}
 	
 	public static void grab(String searchString, String login, String passwd) 
-															throws InterruptedException{
+			throws InterruptedException{
 		
 		WebDriver driver = SINDriver.getInstance().getDriver();
 		TesterManager manager = new TesterManager();

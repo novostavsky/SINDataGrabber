@@ -179,7 +179,7 @@ public class SearchResultPage extends AbstractPage {
 		return this;
 	}
 	public boolean isTheEnd(){
-		if(this.driver.findElements(By.id("upsell")).size() !=0){
+		if(this.driver.findElements(By.id("upsell")).isEmpty()){
 			return true;
 		}else{
 			return false;

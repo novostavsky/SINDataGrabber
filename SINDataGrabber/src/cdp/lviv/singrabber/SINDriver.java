@@ -12,17 +12,22 @@ public class SINDriver {
 	private WebDriver webDriver;
 	
 	private SINDriver(){
-//****** use Firefox driver for debug if you need it
-//      FirefoxProfile profile = new ProfilesIni().getProfile("selenium");
-//      DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-//      capabilities.setJavascriptEnabled(true);
-//      capabilities.setCapability(FirefoxDriver.PROFILE, profile);
-//		WebDriver driver = new FirefoxDriver(capabilities);
-		
-//****** use headless htmlunit if you need speed
-		WebDriver driver = new HtmlUnitDriver();
-		
-		this.webDriver = driver;
+//******use Firefox driver for debug if you need it
+//		this.webDriver = SINDriver.getFullDriver();		
+//******use headless htmlunit if you need speed
+		this.webDriver = SINDriver.getHeadlessDriver();
+	}
+	
+	private static WebDriver getFullDriver(){
+	    FirefoxProfile profile = new ProfilesIni().getProfile("selenium");
+	    DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+	    capabilities.setJavascriptEnabled(true);
+	    capabilities.setCapability(FirefoxDriver.PROFILE, profile);
+	    
+	    return new FirefoxDriver(capabilities);
+	}
+	private static WebDriver getHeadlessDriver(){
+		return new HtmlUnitDriver();
 	}
 	
 	public static SINDriver getInstance(){

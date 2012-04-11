@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import cdp.lviv.singrabber.dao.Tester;
+import cdp.lviv.singrabber.dto.Tester;
 
 public class TesterManager {
 	private static String tblName = "testers";
