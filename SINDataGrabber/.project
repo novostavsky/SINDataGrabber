@@ -14,4 +14,11 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>result_infographic.png</name>
+			<type>1</type>
+			<location>C:/Users/Volodymyr_Novostavsk/Desktop/result_infographic.png</location>
+		</link>
+	</linkedResources>
 </projectDescription>
