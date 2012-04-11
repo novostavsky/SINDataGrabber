@@ -41,21 +41,26 @@ public class MyRunner {
 		SearchResultPage searchResult = (SearchResultPage) homePage.search(searchString);
 		
 		while(!searchResult.isTheEnd()){
-			int personsOnpage = searchResult.getNumOfPersonsOnPage();
-			for(int j=1; j<(personsOnpage+1); j ++){
-				ProfilePage profilePage = (ProfilePage) searchResult.getPerson(j);				
-				Tester tester = new Tester(); 
-		        profilePage.initTester(tester);
-		        
-		        try {
-					manager.insert(tester);
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-		        profilePage.goBack();
-			}
+			MyRunner.getPersons(searchResult, manager);
 			searchResult.getNextSearchResult();
 		}
 		driver.quit();
+	}
+	private static void getPersons(SearchResultPage searchResult, TesterManager manager) 
+			throws InterruptedException{
+		int personsOnpage = searchResult.getNumOfPersonsOnPage();
+		for(int j=1; j<(personsOnpage+1); j ++){
+			ProfilePage profilePage = (ProfilePage) searchResult.getPerson(j);				
+			Tester tester = new Tester(); 
+			profilePage.initTester(tester);
+	        
+	        try {
+				manager.insert(tester);
+			} catch (SQLException e) {
+				//duplicate records cannot be inserted in DB and goes here 
+				e.printStackTrace();
+			}
+	        profilePage.goBack();
+		}
 	}
 }
